@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Hero } from './hero'
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Hero } from './hero';
+import { HeroDetailComponent } from '../hero-detail/hero-detail.component'
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
@@ -7,7 +8,10 @@ import { Hero } from './hero'
 })
 export class HeroComponent implements OnInit {
 
-   heros:Hero[]=[
+  @ViewChild(HeroDetailComponent)
+  detail: HeroDetailComponent;
+
+  heros: Hero[] = [
     { id: 11, name: 'Mr. Nice' },
     { id: 12, name: 'Narco' },
     { id: 13, name: 'Bombasto' },
@@ -22,13 +26,20 @@ export class HeroComponent implements OnInit {
 
   hero: Hero;
 
-  handerClick(data){
-   this.hero = data;
+  handerClick(data) {
+    this.hero = data;
   }
   constructor() { }
 
 
   ngOnInit() {
+  }
+
+  lookDetail() {
+    console.log('father get:' + this.detail);
+  }
+  helloClick(hello) {
+    console.log(hello)
   }
 
 }

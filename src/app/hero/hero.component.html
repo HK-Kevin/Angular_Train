@@ -1,20 +1,10 @@
 <h2>Heros List</h2>
-<ul >
+<ul>
     <li class="list" (click)="handerClick(item)" *ngFor="let item of heros">
         <span>{{item.id}}</span> {{item.name}}
     </li>
 </ul>
 
+<button (click)="lookDetail()">look detail</button>
 
-
-<div *ngIf="hero">
-    <h2>Name： {{hero.name | uppercase}}</h2>
-<ul>
-    <li>
-        id:{{hero.id }}
-    </li>
-    <li>
-        name:<input  [(ngModel)]="hero.name"/>   
-    </li>
-</ul>
-</div>
+<app-hero-detail  [currentHero]="hero" (helloClick)="helloClick($event)"></app-hero-detail>
